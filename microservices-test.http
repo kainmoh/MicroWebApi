@@ -1,0 +1,102 @@
+### Microservices Swagger Endpoints
+### Open these URLs in your browser after running the services
+
+### ============================================
+### SWAGGER UI ENDPOINTS
+### ============================================
+
+### Product Service Swagger
+# Open: https://localhost:7001/swagger
+
+### Payment Service Swagger  
+# Open: https://localhost:7002/swagger
+
+### Order Service Swagger
+# Open: https://localhost:7000/swagger
+
+### API Gateway (No Swagger - uses Ocelot)
+# Open: https://localhost:7100
+
+### ============================================
+### QUICK API TESTS (via API Gateway)
+### ============================================
+
+@gateway = https://localhost:7100
+
+### 1. Get All Products (via Gateway)
+GET {{gateway}}/products
+Accept: application/json
+
+###
+
+### 2. Get All Orders (via Gateway)
+GET {{gateway}}/orders
+Accept: application/json
+
+###
+
+### 3. Get All Payments (via Gateway)
+GET {{gateway}}/payments
+Accept: application/json
+
+###
+
+### ============================================
+### DIRECT SERVICE TESTS
+### ============================================
+
+@productService = https://localhost:7001
+@orderService = https://localhost:7000
+@paymentService = https://localhost:7002
+
+### Get Products (Direct)
+GET {{productService}}/api/products
+Accept: application/json
+
+###
+
+### Get Orders (Direct)
+GET {{orderService}}/api/orders
+Accept: application/json
+
+###
+
+### Get Payments (Direct)
+GET {{paymentService}}/api/payments
+Accept: application/json
+
+###
+
+### ============================================
+### CREATE PRODUCT
+### ============================================
+
+### Create a Product
+POST {{productService}}/api/products
+Content-Type: application/json
+
+{
+  "name": "Laptop",
+  "description": "High-performance laptop",
+  "price": 999.99,
+  "stock": 50,
+  "category": "Electronics"
+}
+
+###
+
+### ============================================
+### CREATE ORDER (Saga Orchestration)
+### ============================================
+
+### Create an Order (This triggers the Saga)
+POST {{orderService}}/api/orders
+Content-Type: application/json
+
+{
+  "productId": 1,
+  "quantity": 2,
+  "paymentMethod": "CreditCard"
+}
+
+###
