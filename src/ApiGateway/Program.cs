@@ -1,5 +1,6 @@
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
+using Ocelot.Provider.Polly;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,7 +19,8 @@ builder.Host.UseSerilog();
 builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
 
 // Add services
-builder.Services.AddOcelot();
+builder.Services.AddOcelot()
+    .AddPolly();
 
 // CORS Configuration
 builder.Services.AddCors(options =>

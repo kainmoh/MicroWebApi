@@ -67,14 +67,13 @@ var app = builder.Build();
 // Configure the HTTP request pipeline
 app.UseGlobalExceptionHandler();
 
-if (app.Environment.IsDevelopment())
+// Enable Swagger for all environments
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Product Service API V1");
-    });
-}
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Product Service API V1");
+    c.RoutePrefix = "swagger";
+});
 
 app.UseHttpsRedirection();
 app.UseCors("AllowAll");

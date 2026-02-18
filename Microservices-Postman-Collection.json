@@ -1,13 +1,210 @@
 {
-  "info": {
-    "name": "Microservices Demo - Complete Collection",
-    "_postman_id": "12345678-1234-1234-1234-123456789012",
-    "description": "Complete API collection for testing the microservices solution",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+"info": {
+  "name": "Microservices Demo - Complete Collection with Auth",
+  "_postman_id": "12345678-1234-1234-1234-123456789012",
+  "description": "Complete API collection for testing the microservices solution with JWT Authentication",
+  "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+},
+"item": [
+  {
+    "name": "Authentication",
+    "item": [
+      {
+        "name": "Login (Admin)",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"Admin@123\"\n}"
+          },
+          "url": {
+            "raw": "https://localhost:7100/gateway/auth/login",
+            "protocol": "https",
+            "host": ["localhost"],
+            "port": "7100",
+            "path": ["gateway", "auth", "login"]
+          }
+        }
+      },
+      {
+        "name": "Login (User)",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"username\": \"john.doe\",\n  \"password\": \"User@123\"\n}"
+          },
+          "url": {
+            "raw": "https://localhost:7100/gateway/auth/login",
+            "protocol": "https",
+            "host": ["localhost"],
+            "port": "7100",
+            "path": ["gateway", "auth", "login"]
+          }
+        }
+      },
+      {
+        "name": "Register New User",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"username\": \"newuser\",\n  \"email\": \"newuser@example.com\",\n  \"password\": \"Password@123\",\n  \"confirmPassword\": \"Password@123\",\n  \"firstName\": \"New\",\n  \"lastName\": \"User\"\n}"
+          },
+          "url": {
+            "raw": "https://localhost:7100/gateway/auth/register",
+            "protocol": "https",
+            "host": ["localhost"],
+            "port": "7100",
+            "path": ["gateway", "auth", "register"]
+          }
+        }
+      },
+      {
+        "name": "Get My Profile",
+        "request": {
+          "method": "GET",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{authToken}}"
+            }
+          ],
+          "url": {
+            "raw": "https://localhost:7100/gateway/auth/profile",
+            "protocol": "https",
+            "host": ["localhost"],
+            "port": "7100",
+            "path": ["gateway", "auth", "profile"]
+          }
+        }
+      },
+      {
+        "name": "Validate Token",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "\"{{authToken}}\""
+          },
+          "url": {
+            "raw": "https://localhost:7100/gateway/auth/validate-token",
+            "protocol": "https",
+            "host": ["localhost"],
+            "port": "7100",
+            "path": ["gateway", "auth", "validate-token"]
+          }
+        }
+      }
+    ]
   },
-  "item": [
-    {
-      "name": "API Gateway",
+  {
+    "name": "User Management (Admin Only)",
+    "item": [
+      {
+        "name": "Get All Users",
+        "request": {
+          "method": "GET",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{authToken}}"
+            }
+          ],
+          "url": {
+            "raw": "https://localhost:7100/gateway/users",
+            "protocol": "https",
+            "host": ["localhost"],
+            "port": "7100",
+            "path": ["gateway", "users"]
+          }
+        }
+      },
+      {
+        "name": "Get User by ID",
+        "request": {
+          "method": "GET",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{authToken}}"
+            }
+          ],
+          "url": {
+            "raw": "https://localhost:7100/gateway/users/2",
+            "protocol": "https",
+            "host": ["localhost"],
+            "port": "7100",
+            "path": ["gateway", "users", "2"]
+          }
+        }
+      },
+      {
+        "name": "Deactivate User",
+        "request": {
+          "method": "PUT",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{authToken}}"
+            }
+          ],
+          "url": {
+            "raw": "https://localhost:7100/gateway/users/2/deactivate",
+            "protocol": "https",
+            "host": ["localhost"],
+            "port": "7100",
+            "path": ["gateway", "users", "2", "deactivate"]
+          }
+        }
+      },
+      {
+        "name": "Activate User",
+        "request": {
+          "method": "PUT",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{authToken}}"
+            }
+          ],
+          "url": {
+            "raw": "https://localhost:7100/gateway/users/2/activate",
+            "protocol": "https",
+            "host": ["localhost"],
+            "port": "7100",
+            "path": ["gateway", "users", "2", "activate"]
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "API Gateway",
       "item": [
         {
           "name": "Products via Gateway",

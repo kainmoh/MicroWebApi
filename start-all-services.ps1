@@ -7,6 +7,12 @@ Write-Host ""
 # Define services with their paths and ports
 $services = @(
     @{
+        Name = "UserService"
+        Path = "src\Services\UserService"
+        Port = "7003"
+        Color = "Blue"
+    },
+    @{
         Name = "ProductService"
         Path = "src\Services\ProductService"
         Port = "7001"

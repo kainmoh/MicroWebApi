@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProductService.Data;
 
@@ -11,9 +12,11 @@ using ProductService.Data;
 namespace ProductService.Migrations
 {
     [DbContext(typeof(ProductDbContext))]
-    partial class ProductDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260214083146_UpdateProductChanges")]
+    partial class UpdateProductChanges
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -83,7 +86,7 @@ namespace ProductService.Migrations
                         {
                             Id = 2,
                             Category = "Electronics",
-                            CreatedAt = new DateTime(2026, 2, 14, 8, 31, 45, 301, DateTimeKind.Utc).AddTicks(6482),
+                            CreatedAt = new DateTime(2026, 2, 14, 8, 31, 45, 301, DateTimeKind.Utc).AddTicks(6659),
                             Description = "Ergonomic wireless mouse with precision tracking",
                             Name = "Wireless Mouse",
                             Price = 25.00m,
@@ -93,7 +96,7 @@ namespace ProductService.Migrations
                         {
                             Id = 3,
                             Category = "Electronics",
-                            CreatedAt = new DateTime(2026, 2, 14, 8, 31, 45, 301, DateTimeKind.Utc).AddTicks(6482),
+                            CreatedAt = new DateTime(2026, 2, 14, 8, 31, 45, 301, DateTimeKind.Utc).AddTicks(6662),
                             Description = "RGB mechanical keyboard with Cherry MX switches",
                             Name = "Mechanical Keyboard",
                             Price = 100.00m,
@@ -103,7 +106,7 @@ namespace ProductService.Migrations
                         {
                             Id = 4,
                             Category = "Accessories",
-                            CreatedAt = new DateTime(2026, 2, 14, 8, 31, 45, 301, DateTimeKind.Utc).AddTicks(6482),
+                            CreatedAt = new DateTime(2026, 2, 14, 8, 31, 45, 301, DateTimeKind.Utc).AddTicks(6665),
                             Description = "7-in-1 USB-C hub with HDMI, USB 3.0, and SD card reader",
                             Name = "USB-C Hub",
                             Price = 45.00m,
@@ -113,7 +116,7 @@ namespace ProductService.Migrations
                         {
                             Id = 5,
                             Category = "Electronics",
-                            CreatedAt = new DateTime(2026, 2, 14, 8, 31, 45, 301, DateTimeKind.Utc).AddTicks(6482),
+                            CreatedAt = new DateTime(2026, 2, 14, 8, 31, 45, 301, DateTimeKind.Utc).AddTicks(6667),
                             Description = "1080p HD webcam with auto-focus",
                             Name = "Webcam HD",
                             Price = 75.00m,

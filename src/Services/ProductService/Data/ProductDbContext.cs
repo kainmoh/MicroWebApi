@@ -44,6 +44,8 @@ public class ProductDbContext : DbContext
 
     private static void SeedData(ModelBuilder modelBuilder)
     {
+        var seedDate = new DateTime(2026, 2, 14, 8, 31, 45, 301, DateTimeKind.Utc).AddTicks(6482);
+        
         modelBuilder.Entity<Product>().HasData(
             new Product 
             { 
@@ -53,7 +55,7 @@ public class ProductDbContext : DbContext
                 Price = 1500.00m, 
                 Quantity = 50, 
                 Category = "Electronics",
-                CreatedAt = DateTime.UtcNow
+                CreatedAt = seedDate
             },
             new Product 
             { 
@@ -63,7 +65,7 @@ public class ProductDbContext : DbContext
                 Price = 25.00m, 
                 Quantity = 200, 
                 Category = "Electronics",
-                CreatedAt = DateTime.UtcNow
+                CreatedAt = seedDate
             },
             new Product 
             { 
@@ -73,7 +75,7 @@ public class ProductDbContext : DbContext
                 Price = 100.00m, 
                 Quantity = 150, 
                 Category = "Electronics",
-                CreatedAt = DateTime.UtcNow
+                CreatedAt = seedDate
             },
             new Product 
             { 
@@ -83,7 +85,7 @@ public class ProductDbContext : DbContext
                 Price = 45.00m, 
                 Quantity = 300, 
                 Category = "Accessories",
-                CreatedAt = DateTime.UtcNow
+                CreatedAt = seedDate
             },
             new Product 
             { 
@@ -93,7 +95,7 @@ public class ProductDbContext : DbContext
                 Price = 75.00m, 
                 Quantity = 120, 
                 Category = "Electronics",
-                CreatedAt = DateTime.UtcNow
+                CreatedAt = seedDate
             }
         );
     }

@@ -35,7 +35,7 @@ namespace PaymentService.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("FailureReason")
                         .HasMaxLength(500)
@@ -50,7 +50,7 @@ namespace PaymentService.Migrations
                         .HasColumnType("varchar(50)");
 
                     b.Property<DateTime?>("ProcessedAt")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Status")
                         .IsRequired()
